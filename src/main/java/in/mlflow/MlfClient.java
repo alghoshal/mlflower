@@ -21,12 +21,13 @@ public class MlfClient {
 		}
 		
 		MlfClient mlfClient= new MlfClient();
+		MlflowContext mlflowContext = new MlflowContext(client);
 		
 		// 1st run 
-		mlfClient.captureActiveRun(new MlflowContext(client), experimentName,"runOne");
+		mlfClient.captureActiveRun(mlflowContext, experimentName,"runOne");
 		
 		// 2nd run
-		mlfClient.captureActiveRun(new MlflowContext(client), experimentName,"runTwo");
+		mlfClient.captureActiveRun(mlflowContext, experimentName,"runTwo");
 	}
 
 	/**
