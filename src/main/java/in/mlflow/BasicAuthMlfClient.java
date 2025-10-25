@@ -28,8 +28,9 @@ public class BasicAuthMlfClient extends MlfClient{
 			client.createExperiment(experimentName);
 		}
 		
-		BasicAuthMlfClient mlfClient= new BasicAuthMlfClient();
 		MlflowContext mlflowContext = new MlflowContext(client);
+
+		BasicAuthMlfClient mlfClient= new BasicAuthMlfClient();
 
 		// 1st run 
 		mlfClient.captureActiveRun(mlflowContext, experimentName,"runAuthThree");

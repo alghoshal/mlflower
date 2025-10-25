@@ -20,8 +20,9 @@ public class MlfClient {
 			client.createExperiment(experimentName);
 		}
 		
-		MlfClient mlfClient= new MlfClient();
 		MlflowContext mlflowContext = new MlflowContext(client);
+
+		MlfClient mlfClient= new MlfClient();
 		
 		// 1st run 
 		mlfClient.captureActiveRun(mlflowContext, experimentName,"runOne");
