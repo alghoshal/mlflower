@@ -20,7 +20,13 @@ public class MlfClient {
 			client.createExperiment(experimentName);
 		}
 		
-		new MlfClient().captureActiveRun(new MlflowContext(client), experimentName);
+		MlfClient mlfClient= new MlfClient();
+		
+		// 1st run 
+		mlfClient.captureActiveRun(new MlflowContext(client), experimentName,"runOne");
+		
+		// 2nd run
+		mlfClient.captureActiveRun(new MlflowContext(client), experimentName,"runTwo");
 	}
 
 	/**
@@ -28,12 +34,12 @@ public class MlfClient {
 	 * @param mlflowContext
 	 * @param experimentName
 	 */
-	void captureActiveRun(MlflowContext mlflowContext, String experimentName) {
+	void captureActiveRun(MlflowContext mlflowContext, String experimentName, String runName) {
 
-		mlflowContext.setExperimentName(experimentName).withActiveRun("runOne", (run -> {
-			run.logParam("dat1", "43.53");
-			run.logParam("dat2", "0.5123");
-			run.logMetric("MY_METRIC1", 20.0);
+		mlflowContext.setExperimentName(experimentName).withActiveRun(runName, (run -> {
+			run.logParam("dat1_"+runName, "43.53");
+			run.logParam("dat2_"+runName, "0.5123");
+			run.logMetric("MY_METRIC_"+runName, 20.0);
 		}));
 	}
 }
